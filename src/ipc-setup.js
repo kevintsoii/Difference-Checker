@@ -16,8 +16,9 @@ function setupIPC(mainWindow) {
     }
   });
 
-  ipcMain.on("check-first-load", (event) => {
+  ipcMain.handle("check-first-load", () => {
     const isFirstLoad = store.get("isFirstLoad", true);
+    console.log(isFirstLoad);
     if (isFirstLoad) {
       store.set("isFirstLoad", false);
     }

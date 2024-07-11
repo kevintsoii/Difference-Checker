@@ -1,5 +1,7 @@
 import { useState } from "react";
 
+import Tooltip from "../util/Tooltip";
+
 import logo from "../../static/logo.svg";
 
 import CloseIcon from "@mui/icons-material/Close";
@@ -17,17 +19,20 @@ const TitleBar = () => {
 
       <div className="flex gap-3 items-center">
         <h1 className="font-semibold">Difference Checker · v1.0.0</h1>
-        <button
-          className={`flex ${
-            isAlwaysOnTop ? "text-red-400" : "text-green-700/75"
-          } hover:bg-gray-200 p-1 rounded-xl`}
-          onClick={() => {
-            window.electronAPI.alwaysOnTop();
-            setIsAlwaysOnTop(!isAlwaysOnTop);
-          }}
-        >
-          {isAlwaysOnTop ? <LockIcon /> : <LockOpenIcon />}
-        </button>
+
+        <Tooltip text="Always on Top">
+          <button
+            className={`flex ${
+              isAlwaysOnTop ? "text-red-400" : "text-green-700/75"
+            } hover:bg-gray-200 p-1 rounded-xl`}
+            onClick={() => {
+              window.electronAPI.alwaysOnTop();
+              setIsAlwaysOnTop(!isAlwaysOnTop);
+            }}
+          >
+            {isAlwaysOnTop ? <LockIcon /> : <LockOpenIcon />}
+          </button>
+        </Tooltip>
       </div>
 
       <div className="flex gap-2">

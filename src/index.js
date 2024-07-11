@@ -4,6 +4,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom";
 
 import TitleBar from "./ui/TitleBar/TitleBar.jsx";
 import App from "./ui/App.jsx";
+import Welcome from "./ui/Welcome/Welcome.jsx";
 
 import "./styles/index.css";
 
@@ -16,9 +17,11 @@ const router = createBrowserRouter([
   },
 ]);
 
+const isFirstLoad = await window.electronAPI?.checkFirstLoad();
+
 root.render(
   <React.StrictMode>
     <TitleBar />
-    <RouterProvider router={router} />
+    {isFirstLoad ? <Welcome /> : <RouterProvider router={router} />}
   </React.StrictMode>
 );
