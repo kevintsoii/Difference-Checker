@@ -1,29 +1,41 @@
-import { app, BrowserWindow } from "electron";
-import { join } from "path";
+import path from "path";
+
+import { app, BrowserWindow, Menu } from "electron";
 import isDev from "electron-is-dev";
 
+import setupIPC from "./ipc-setup.js";
+
+let mainWindow;
+
 function createWindow() {
-  const window = new BrowserWindow({
-    width: 800,
-    height: 600,
+  mainWindow = new BrowserWindow({
+    width: 1400,
+    height: 800,
+    frame: false,
     webPreferences: {
-      nodeIntegration: true,
+      contextIsolation: true,
+      preload: path.join(process.cwd(), "src", "preload.js"),
+      nodeIntegration: false,
+      devTools: false,
     },
   });
 
   const startURL = isDev
     ? "http://localhost:3000"
-    : `file://${join(__dirname, "../build/index.html")}`;
+    : `file://${path.resolve(process.cwd(), "..", "build", "index.html")}`;
 
-  window.loadURL(startURL);
+  mainWindow.loadURL(startURL);
 }
 
 app.on("ready", () => {
   createWindow();
 
-  app.on("activate", () => {
-    if (BrowserWindow.getAllWindows().length === 0) createWindow();
-  });
+  setupIPC(mainWindow);
+  Menu.setApplicationMenu(null);
+});
+
+app.on("activate", () => {
+  if (BrowserWindow.getAllWindows().length === 0) createWindow();
 });
 
 app.on("window-all-closed", () => {
