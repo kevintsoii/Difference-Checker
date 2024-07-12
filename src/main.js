@@ -14,6 +14,7 @@ function createWindow() {
     minWidth: 700,
     minHeight: 600,
     frame: false,
+    icon: path.join(process.cwd(), "public/logo.png"),
     webPreferences: {
       contextIsolation: true,
       preload: path.join(process.cwd(), "src", "preload.js"),
