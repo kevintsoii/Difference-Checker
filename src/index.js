@@ -15,13 +15,16 @@ const router = createBrowserRouter([
     path: "/",
     element: <App />,
   },
+  {
+    path: "/welcome",
+    element: <Welcome />,
+  },
 ]);
 
-const isFirstLoad = await window.electronAPI?.checkFirstLoad();
 
 root.render(
   <React.StrictMode>
     <TitleBar />
-    {isFirstLoad ? <Welcome /> : <RouterProvider router={router} />}
+    <RouterProvider router={router} />
   </React.StrictMode>
 );

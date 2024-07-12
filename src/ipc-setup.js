@@ -16,15 +16,6 @@ function setupIPC(mainWindow) {
     }
   });
 
-  ipcMain.handle("check-first-load", () => {
-    const isFirstLoad = store.get("isFirstLoad", true);
-    console.log(isFirstLoad);
-    if (isFirstLoad) {
-      store.set("isFirstLoad", false);
-    }
-    return isFirstLoad;
-  });
-
   ipcMain.on("window:minimize", () => {
     mainWindow.minimize();
   });
@@ -43,6 +34,10 @@ function setupIPC(mainWindow) {
 
   ipcMain.on("window:ontop", () => {
     mainWindow.setAlwaysOnTop(!mainWindow.isAlwaysOnTop());
+  });
+
+  ipcMain.on("log", (event, message) => {
+    console.log(`${message}`);
   });
 }
 

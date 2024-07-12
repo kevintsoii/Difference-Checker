@@ -23,7 +23,7 @@ function createWindow() {
   });
 
   const startURL = isDev
-    ? "http://localhost:3000"
+    ? "http://localhost:3000/welcome"
     : `file://${path.resolve(process.cwd(), "..", "build", "index.html")}`;
 
   mainWindow.loadURL(startURL);
