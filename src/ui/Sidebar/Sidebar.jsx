@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
 import KeyboardArrowRightIcon from "@mui/icons-material/KeyboardArrowRight";
@@ -10,7 +11,6 @@ import SidebarToggler from "./SidebarToggler.jsx";
 
 const Sidebar = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [isToggled, setIsToggled] = useState(false);
 
   const initial = { width: 0, opacity: 0 };
   const transition = { duration: 0.5 };
@@ -42,11 +42,26 @@ const Sidebar = () => {
         initial={initial}
         animate={{ width: isOpen ? 250 : 0, opacity: isOpen ? 1 : 0 }}
         transition={transition}
-        className="flex flex-col flex-1 overflow-hidden text-nowrap mt-3"
+        className="flex flex-col flex-1 overflow-hidden text-nowrap mt-3 gap-6 justify-between"
       >
         <ul>
           <SidebarToggler setting={"showAll"} />
         </ul>
+
+        <div className="flex flex-col self-center gap-2">
+          <Link to="/">
+            <button className="flex items-center justify-center w-48 bg-gray-500 hover:opacity-80 gap-2 py-2 px-12 text-white rounded-xl font-medium active:scale-90">
+              <HomeIcon />
+              <h2>Home</h2>
+            </button>
+          </Link>
+          <Link to="/info">
+            <button className="flex items-center justify-center w-48 bg-gray-500 hover:opacity-80 gap-2 py-2 px-12 text-white rounded-xl font-medium active:scale-90">
+              <InfoIcon />
+              <h2>Info</h2>
+            </button>
+          </Link>
+        </div>
       </motion.div>
     </div>
   );

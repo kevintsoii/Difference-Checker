@@ -9,7 +9,7 @@ const SidebarToggler = ({ setting }) => {
 
   return (
     <li className="flex items-center justify-between px-2">
-      <h2 className="font-medium">{setting}</h2>
+      <h2 className="font-medium text-black">{setting}</h2>
       <button
         onClick={() => {
           dispatch(toggle(setting));

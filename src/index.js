@@ -8,6 +8,7 @@ import store from "./store/store.js";
 import TitleBar from "./ui/TitleBar/TitleBar.jsx";
 import App from "./ui/App.jsx";
 import Welcome from "./ui/Welcome/Welcome.jsx";
+import Info from "./ui/Info/Info.jsx";
 
 import "./styles/index.css";
 
@@ -17,10 +18,15 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <App />,
+    errorElement: <h1>404 Not Found</h1>,
   },
   {
     path: "/welcome",
     element: <Welcome />,
+  },
+  {
+    path: "/info",
+    element: <Info />,
   },
 ]);
 
