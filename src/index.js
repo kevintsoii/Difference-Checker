@@ -1,6 +1,9 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
+import { Provider } from "react-redux";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+
+import store from "./store/store.js";
 
 import TitleBar from "./ui/TitleBar/TitleBar.jsx";
 import App from "./ui/App.jsx";
@@ -21,10 +24,11 @@ const router = createBrowserRouter([
   },
 ]);
 
-
 root.render(
   <React.StrictMode>
     <TitleBar />
-    <RouterProvider router={router} />
+    <Provider store={store}>
+      <RouterProvider router={router} />
+    </Provider>
   </React.StrictMode>
 );
