@@ -16,7 +16,7 @@ const Sidebar = () => {
   const transition = { duration: 0.5 };
 
   return (
-    <div className="flex flex-col my-5 mx-1 px-2 py-2 border-r-2 rounded-sm">
+    <div className="flex flex-col my-5 mx-1 px-2 py-2 border-r-2 rounded-sm max-h-[calc(100vh-88px)]">
       <div className="flex items-center justify-between text-gray-500 pb-3 border-b-2">
         {isOpen && (
           <motion.h1
@@ -40,7 +40,7 @@ const Sidebar = () => {
 
       <motion.div
         initial={initial}
-        animate={{ width: isOpen ? 250 : 0, opacity: isOpen ? 1 : 0 }}
+        animate={{ width: isOpen ? 225 : 0, opacity: isOpen ? 1 : 0 }}
         transition={transition}
         className="flex flex-col flex-1 overflow-hidden text-nowrap mt-3 gap-6 justify-between"
       >

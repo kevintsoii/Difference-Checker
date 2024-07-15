@@ -2,7 +2,7 @@ import { useState } from "react";
 
 import Tooltip from "../util/Tooltip";
 
-import logo from "../../static/logo.svg";
+import logo from "../../static/logo.png";
 
 import CloseIcon from "@mui/icons-material/Close";
 import CropSquareIcon from "@mui/icons-material/CropSquare";
@@ -15,10 +15,9 @@ const TitleBar = () => {
 
   return (
     <header className="flex px-3 h-12 bg-gray-100 items-center justify-between">
-      <img src={logo} width={32} alt="logo" />
-
-      <div className="flex gap-3 items-center">
-        <h1 className="font-semibold">Difference Checker · v1.0.0</h1>
+      <div className="flex items-center">
+        <img src={logo} width={32} alt="logo" className="py-1.5" />
+        <h1 className="font-semibold mx-1.5">Difference Checker · v1.0.0</h1>
 
         <Tooltip text="Always on Top">
           <button
