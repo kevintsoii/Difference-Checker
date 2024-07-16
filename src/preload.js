@@ -4,6 +4,9 @@ contextBridge.exposeInMainWorld("electronAPI", {
   storeOperation: (action, key, value) =>
     ipcRenderer.invoke("store-operation", action, key, value),
 
+  openFileDialog: () => ipcRenderer.invoke("open-file-dialog"),
+  readFile: (filePath) => ipcRenderer.invoke("read-file", filePath),
+
   minimizeWindow: () => ipcRenderer.send("window:minimize"),
   maximizeWindow: () => ipcRenderer.send("window:maximize"),
   closeWindow: () => ipcRenderer.send("window:close"),

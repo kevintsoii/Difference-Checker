@@ -1,5 +1,6 @@
-import { ipcMain } from "electron";
+import { ipcMain, dialog } from "electron";
 import Store from "electron-store";
+import fs from "fs/promises";
 
 const store = new Store();
 
@@ -13,6 +14,23 @@ function setupIPC(mainWindow) {
         return true;
       default:
         throw new Error(`Invalid action: ${action}`);
+    }
+  });
+
+  ipcMain.handle("open-file-dialog", async () => {
+    const result = await dialog.showOpenDialog({
+      properties: ["openFile"],
+    });
+    return result.filePaths;
+  });
+
+  ipcMain.handle("read-file", async (event, filePath) => {
+    try {
+      const data = await fs.readFile(filePath, "utf8");
+      return data;
+    } catch (error) {
+      console.error("Failed to read file:", error);
+      return null;
     }
   });
 

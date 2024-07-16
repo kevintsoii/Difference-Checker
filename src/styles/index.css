@@ -12,6 +12,7 @@
   -webkit-user-select: none;
   -ms-user-select: none;
   user-select: none;
+  scroll-behavior: smooth;
 }
 
 header {
@@ -31,4 +32,23 @@ header button {
   border-width: 5px;
   border-style: solid;
   border-color: transparent #9ca3af transparent transparent;
+}
+
+.overflow-y-scroll::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+.overflow-y-scroll::-webkit-scrollbar-track {
+  background: #fff;
+  margin: 0 10px;
+}
+
+.overflow-y-scroll::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 10px;
+}
+
+.overflow-y-scroll::-webkit-scrollbar-thumb:hover {
+  background: #555;
 }
