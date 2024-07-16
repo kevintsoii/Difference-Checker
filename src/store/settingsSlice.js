@@ -3,7 +3,9 @@ import { createSlice } from "@reduxjs/toolkit";
 export const settingsSlice = createSlice({
   name: "settings",
   initialState: {
-    showAll: true,
+    "Lowercase Lines": false,
+    "Trim Whitespace": false,
+    "Collapse Unchanged": true,
   },
   reducers: {
     toggle: (state, action) => {

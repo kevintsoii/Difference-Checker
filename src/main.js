@@ -11,9 +11,10 @@ function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1400,
     height: 800,
-    minWidth: 1000,
-    minHeight: 600,
+    minWidth: 1400,
+    minHeight: 800,
     frame: false,
+    roundedCorners: false,
     icon: path.join(process.cwd(), "public/logo.png"),
     webPreferences: {
       contextIsolation: true,

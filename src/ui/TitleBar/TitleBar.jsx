@@ -14,7 +14,7 @@ const TitleBar = () => {
   const [isAlwaysOnTop, setIsAlwaysOnTop] = useState(false);
 
   return (
-    <header className="flex px-3 h-10 bg-gray-100 items-center justify-between">
+    <header className="flex px-3 min-h-10 bg-gray-100 items-center justify-between">
       <div className="flex items-center">
         <img src={logo} width={30} alt="logo" />
         <h1 className="font-semibold mx-1.5">Difference Checker · v1.0.0</h1>

@@ -16,7 +16,7 @@ const Sidebar = () => {
   const transition = { duration: 0.5 };
 
   return (
-    <div className="flex flex-col my-5 mx-1 px-2 py-2 border-r-2 rounded-sm max-h-[calc(100vh-88px)]">
+    <div className="flex flex-col my-5 mx-1 px-2 py-2 border-r-2 rounded-sm max-h-[calc(100vh-40px)]">
       <div className="flex items-center justify-between text-gray-500 pb-3 border-b-2">
         {isOpen && (
           <motion.h1
@@ -44,8 +44,10 @@ const Sidebar = () => {
         transition={transition}
         className="flex flex-col flex-1 overflow-hidden text-nowrap mt-3 gap-6 justify-between"
       >
-        <ul>
-          <SidebarToggler setting={"showAll"} />
+        <ul className="flex flex-col gap-3">
+          <SidebarToggler setting={"Lowercase Lines"} />
+          <SidebarToggler setting={"Trim Whitespace"} />
+          <SidebarToggler setting={"Collapse Unchanged"} />
         </ul>
 
         <div className="flex flex-col self-center gap-2">

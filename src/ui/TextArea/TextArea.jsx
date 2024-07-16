@@ -6,7 +6,7 @@ import DeleteIcon from "@mui/icons-material/Delete";
 
 const TextArea = ({ text, onChangeFunction, label }) => {
   return (
-    <div className="flex flex-col flex-1 items-center">
+    <div className="flex flex-col flex-1 items-center h-full">
       <div className="flex items-center justify-between w-full pl-2 pb-0.5">
         <h1 className="text-gray-600 font-medium">{label}</h1>
         <div className="flex gap-1.5 text-gray-600">
