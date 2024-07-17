@@ -3,7 +3,7 @@
   "name": "difference-checker",
   "version": "0.1.0",
   "private": true,
-  "main": "./src/main.js",
+  "main": "public/electron.js",
   "build": {
     "appId": "difference-checker",
     "productName": "Difference Checker",

@@ -88,7 +88,6 @@ function App() {
             <div className="top-8 sticky self-end w-10 h-10 z-10">
               <button
                 onClick={() => {
-                  console.log(editor.current);
                   editor.current?.scrollIntoView({ behavior: "smooth" });
                 }}
                 className="w-full h-full p-2 bg-gray-300/50 hover:opacity-25 rounded-full active:scale-95"
@@ -104,7 +103,7 @@ function App() {
               collapseUnchanged={
                 collapseUnchanged ? { margin: 2, minSize: 3 } : null
               }
-              className="h-[75vh]"
+              className="pb-10"
             >
               <CodeMirrorMerge.Original
                 value={diffText1}
@@ -112,7 +111,6 @@ function App() {
                   EditorView.editable.of(false),
                   EditorState.readOnly.of(true),
                 ]}
-                className="h-[75vh]"
               />
               <CodeMirrorMerge.Modified
                 value={diffText2}
@@ -120,7 +118,6 @@ function App() {
                   EditorView.editable.of(false),
                   EditorState.readOnly.of(true),
                 ]}
-                className="h-[75vh]"
               />
             </CodeMirrorMerge>
           </div>

@@ -3,7 +3,7 @@ import path from "path";
 import { app, BrowserWindow, Menu } from "electron";
 import isDev from "electron-is-dev";
 
-import setupIPC from "./ipc-setup.js";
+import setupIPC from "../src/ipc-setup.js";
 
 let mainWindow;
 
@@ -18,15 +18,15 @@ function createWindow() {
     icon: path.join(process.cwd(), "public/logo.png"),
     webPreferences: {
       contextIsolation: true,
-      preload: path.join(process.cwd(), "src", "preload.js"),
+      preload: path.resolve(process.cwd(), "src", "preload.js"),
       nodeIntegration: false,
-      devTools: false,
+      devTools: true,
     },
   });
 
   const startURL = isDev
     ? "http://localhost:3000/welcome"
-    : `file://${path.resolve(process.cwd(), "..", "build", "index.html")}`;
+    : `file://${path.resolve(process.cwd(), "build/index.html")}`;
 
   mainWindow.loadURL(startURL);
 }
