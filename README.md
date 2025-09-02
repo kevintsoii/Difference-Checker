@@ -26,14 +26,8 @@ A difference checker software made using Electron. Useful for viewing changes ma
    npm install
    ```
 
-2. Run the React App
+2. Run the React App + Electron
    
    ```
-   npm run start
-   ```
-
-3. Run Electron (in a second terminal)
-   
-   ```
-   npm run electron
+   npm run electron-dev
    ```
