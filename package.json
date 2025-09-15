@@ -6,7 +6,8 @@
   "type": "module",
   "scripts": {
     "lint": "eslint .",
-    "dev": "concurrently -k \"vite\" \"wait-on tcp:5173 && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .\"",
+    "dev": "vite",
+    "electron": "concurrently -k \"vite\" \"wait-on tcp:5173 && cross-env VITE_DEV_SERVER_URL=http://localhost:5173 electron .\"",
     "build": "vite build && electron-builder",
     "preview": "vite preview"
   },

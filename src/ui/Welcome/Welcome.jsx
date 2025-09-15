@@ -10,11 +10,25 @@ const Welcome = () => {
 
   useEffect(() => {
     const checkFirstLoad = async () => {
-      const firstLoad = await window.electronAPI?.storeOperation(
-        "get",
-        "isFirstLoad"
-      );
-      setIsFirstLoad(firstLoad);
+      try {
+        // First, try to check electron store if available
+        if (window.electronAPI?.storeOperation) {
+          const electronFirstLoad = await window.electronAPI.storeOperation(
+            "get",
+            "isFirstLoad"
+          );
+          setIsFirstLoad(electronFirstLoad !== false);
+          return;
+        }
+        
+        // Fallback to localStorage if electron API is not available
+        const hasVisited = localStorage.getItem("hasVisitedBefore");
+        setIsFirstLoad(hasVisited === null);
+      } catch (error) {
+        // If both methods fail, assume it's the first visit
+        console.warn("Storage check failed:", error);
+        setIsFirstLoad(true);
+      }
     };
 
     checkFirstLoad();
@@ -60,11 +74,22 @@ const Welcome = () => {
         <button
           className="flex items-center bg-green-600 hover:opacity-90 gap-2 py-3 px-4 text-white rounded-2xl font-medium active:scale-90"
           onClick={async () => {
-            await window.electronAPI?.storeOperation(
-              "set",
-              "isFirstLoad",
-              false
-            );
+            try {
+              // First, try to use electron store if available
+              if (window.electronAPI?.storeOperation) {
+                await window.electronAPI.storeOperation(
+                  "set",
+                  "isFirstLoad",
+                  false
+                );
+                return;
+              }
+              
+              // Fallback to localStorage if electron API is not available
+              localStorage.setItem("hasVisitedBefore", "true");
+            } catch (error) {
+              console.warn("Could not save visit state:", error);
+            }
           }}
         >
           <h2>Get Started</h2>

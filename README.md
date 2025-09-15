@@ -29,7 +29,7 @@ A difference checker software made using Electron. Useful for viewing changes ma
 2. Run the React App + Electron
    
    ```
-   npm run electron-dev
+   npm run electron
    ```
 
 3. (Optionally) build
