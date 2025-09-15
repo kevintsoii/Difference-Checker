@@ -9,7 +9,8 @@ A difference checker software made using Electron. Useful for viewing changes ma
 
 ## Preview
 
-Website: https://difference-checker.vercel.app/
+Website preview: https://difference-checker.vercel.app/
+
 macOS App: https://github.com/kevintsoii/Difference-Checker/releases/tag/v0.0.1
 
 ![explorer_evyTWMPj5n](https://github.com/user-attachments/assets/cfbc9302-cd14-4ca1-9484-2ec969718d84)
