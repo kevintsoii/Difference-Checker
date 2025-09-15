@@ -1,20 +1,26 @@
 import { createSlice } from "@reduxjs/toolkit";
 
+const initialState = {
+  isCollapsed: false,
+  isDarkMode: false,
+  // Add other settings as needed
+};
+
 export const settingsSlice = createSlice({
   name: "settings",
-  initialState: {
-    "Lowercase Lines": false,
-    "Trim Whitespace": false,
-    "Collapse Unchanged": true,
-  },
+  initialState,
   reducers: {
     toggle: (state, action) => {
-      const key = action.payload;
-      state[key] = !state[key];
+      const setting = action.payload;
+      state[setting] = !state[setting];
+    },
+    setSetting: (state, action) => {
+      const { setting, value } = action.payload;
+      state[setting] = value;
     },
   },
 });
 
-export const { toggle } = settingsSlice.actions;
+export const { toggle, setSetting } = settingsSlice.actions;
 
 export default settingsSlice.reducer;

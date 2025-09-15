@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import { Navigate, Link } from "react-router-dom";
 import { motion } from "framer-motion";
 
-import logo from "../../static/logo.svg";
+import logo from "/logo.png";
 import ArrowForwardIcon from "@mui/icons-material/ArrowForward";
 
 const Welcome = () => {

@@ -1,13 +1,14 @@
-import path from "path";
-
+import { join } from "path";
 import { app, BrowserWindow, Menu } from "electron";
-import isDev from "electron-is-dev";
+import { fileURLToPath } from 'node:url';
 
-import setupIPC from "../src/ipc-setup.js";
+import setupIPC from "./ipc-setup.js";
 
 let mainWindow;
+const isDev = !!process.env.VITE_DEV_SERVER_URL;
+const __dirname = fileURLToPath(new URL('.', import.meta.url));
 
-function createWindow() {
+async function createWindow() {
   mainWindow = new BrowserWindow({
     width: 1400,
     height: 800,
@@ -15,20 +16,21 @@ function createWindow() {
     minHeight: 800,
     frame: false,
     roundedCorners: false,
-    icon: path.join(process.cwd(), "public/logo.png"),
+    icon: join(__dirname, 'assets', 'logo.png'),
     webPreferences: {
       contextIsolation: true,
-      preload: path.resolve(process.cwd(), "src", "preload.js"),
+      preload: join(__dirname, "preload.js"),
       nodeIntegration: false,
       devTools: true,
     },
   });
 
-  const startURL = isDev
-    ? "http://localhost:3000/welcome"
-    : `file://${path.resolve(process.cwd(), "resources/build/index.html")}`;
-
-  mainWindow.loadURL(startURL);
+  if (isDev && process.env.VITE_DEV_SERVER_URL) {
+    await mainWindow.loadURL(process.env.VITE_DEV_SERVER_URL);
+  } else {
+    const indexHtml = join(__dirname, '..', 'dist', 'index.html');
+    await mainWindow.loadFile(indexHtml);
+  }
 }
 
 app.on("ready", () => {

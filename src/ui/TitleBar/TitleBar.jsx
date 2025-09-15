@@ -2,7 +2,9 @@ import { useState } from "react";
 
 import Tooltip from "../util/Tooltip";
 
-import logo from "../../static/logo.png";
+import logo from "/logo.png";
+
+
 
 import CloseIcon from "@mui/icons-material/Close";
 import CropSquareIcon from "@mui/icons-material/CropSquare";

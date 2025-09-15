@@ -4,8 +4,9 @@ import CodeMirrorMerge from "react-codemirror-merge";
 import { EditorView } from "codemirror";
 import { EditorState } from "@codemirror/state";
 
-import Sidebar from "./Sidebar/Sidebar";
-import TextArea from "./TextArea/TextArea";
+import Sidebar from "./ui/Sidebar/Sidebar";
+import TextArea from "./ui/TextArea/TextArea";
+import "./App.css";
 
 import ArrowUpwardIcon from "@mui/icons-material/ArrowUpward";
 

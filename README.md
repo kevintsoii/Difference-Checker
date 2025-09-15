@@ -3,7 +3,7 @@
 A difference checker software made using Electron. Useful for viewing changes made to code, text, and other files.
 
 **Tech Stack**
-- Electron
+- Electron + Node.js
 - React & Redux
 - Tailwind CSS
 
@@ -31,3 +31,9 @@ A difference checker software made using Electron. Useful for viewing changes ma
    ```
    npm run electron-dev
    ```
+
+3. (Optionally) build
+
+    ```
+    npm run build
+    ```
